@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <style>
+      body {
+        background-color: #595959;
+        font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+        background-image: url('https://www.leadsquared.com/wp-content/uploads/2021/11/What-is-P2P-lending-Lending-Cycle.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      div.form {
+        box-shadow: 2px 2px 30px #1a1a1a;
+        width: 45vw;
+        background-color: rgba(191, 191, 191, 0.8);
+        text-align: center; 
+        border-left-color: #a6a6a6;
+        margin: auto;
+        margin-top: 100px;
+      }
+      form {
+        border-left-style: solid;
+        border-color: #9933ff;
+        border-left-width: 5px;
+        padding: 15px;
+      }
+      h1 {
+      color: #ffffff;
+      text-align: center;
+      margin-top: 50px;
+      }
+      input[type=text] {
+        text-align: center;
+        width: 100px;
+        height: 30px;
+        border: 0px;
+      }
+      input[type=submit] {
+        background-color: #b366ff;
+        width: 90px;
+        height: 30px;
+        border: 0px;
+      }
+      input[type=submit]:hover {
+        background-color: #a64dff;
+      }
+      span {
+        color: #ffffff;
+      }
+    </style>
+    <title>Financial Risk Analysis and Prediction</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  </head>
+  <body>
+    <h1>Financial Risk Analysis and Prediction of Online P2P Lending Platform</h1>
+    <center>
+    <div class="form">
+    <form>
+      <p>Classification Response: {{ class_response }}</p>
+    <p>Regression Response: {{ reg_response }}</p>
+      <a href="http://192.168.0.108:8000/"><button>Go Back</button></a>
+    </form>
+  </div>
+</center>
+</body>
+</html>

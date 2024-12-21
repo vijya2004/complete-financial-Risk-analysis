@@ -1,0 +1,16 @@
+'ListingNumber'  1074836
+'BorrowerAPR' 0.30748
+'BorrowerRate' 
+'ClosedDate'
+'LoanMonthsSinceOrigination' 
+'LoanNumber' 
+'LoanOriginationQuarter'
+'LP_CustomerPayments' 
+'LP_CustomerPrincipalPayments'
+'LoanCurrentDaysDelinquent' 
+'MonthlyLoanPayment' 
+'EmploymentStatus'
+
+
+
+

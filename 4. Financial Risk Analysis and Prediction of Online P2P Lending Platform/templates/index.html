@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Financial Risk Analysis and Prediction</title>
+  <style>
+    body {
+      background-color: #595959;
+      font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+      background-image: url('https://www.leadsquared.com/wp-content/uploads/2021/11/What-is-P2P-lending-Lending-Cycle.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+    }
+    h1 {
+      color: black;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .form-container {
+      width: 80%;
+      max-width: 1000px;
+      margin: 40px auto;
+      background-color: rgba(191, 191, 191, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    form {
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .form-section {
+      width: 48%;
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    input[type=text], select {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+    input[type=submit] {
+      width: 50%;
+      background-color: #4caf50;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 0 auto;
+      display: block;
+    }
+    input[type=submit]:hover {
+      background-color: #45a049;
+    }
+    .dropdown-container {
+      width: 50%;
+      max-width: 1000px;
+      margin: 0 auto 40px;
+      background-color: rgba(191, 191, 191, 0.9);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+    }
+    .dropdown-section {
+      width: 45%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Financial Risk Analysis and Prediction of Online P2P Lending Platform</h1>
+  <div class="dropdown-container">
+    <div class="dropdown-section">
+      <label for="model-type">Select Model Type:</label>
+      <select id="model-type" name="model-type" required onchange="updateModelOptions()">
+        <option value="">Select Model Type</option>
+        <option value="classifiers">Classification</option>
+        <option value="regressors">Regression</option>
+      </select>
+    </div>
+    <div class="dropdown-section">
+      <label for="model">Select Model:</label>
+      <select id="model" name="model" required>
+        <option value="">Select Model</option>
+      </select>
+    </div>
+  </div>
+  <div class="form-container">
+    <form action="/predict" method="post">
+
+      <div class="form-section">
+        <label for="ListingNumber">Listing Number:</label>
+        <input type="text" id="ListingNumber" name="ListingNumber" placeholder="Enter your Listing Number" required>
+      </div>
+
+      <div class="form-section">
+        <label for="BorrowerAPR">Borrower APR:</label>
+        <input type="text" id="BorrowerAPR" name="BorrowerAPR" placeholder="Enter your Borrower APR" required>
+      </div>
+
+      <div class="form-section">
+        <label for="BorrowerRate">Borrower Rate:</label>
+        <input type="text" id="BorrowerRate" name="BorrowerRate" placeholder="Enter your Borrower Rate" required>        
+      </div>
+
+      <div class="form-section">
+        <label for="LoanMonthsSinceOrigination">Loan Months Since Origination:</label>
+        <input type="text" id="LoanMonthsSinceOrigination" name="LoanMonthsSinceOrigination" placeholder="Enter Loan Months Since Origination" required>
+      </div>
+
+      <div class="form-section">
+        <label for="LoanNumber">Loan Number:</label>
+        <input type="text" id="LoanNumber" name="LoanNumber" placeholder="Enter your Loan Number" required>
+      </div>
+
+      <div class="form-section">
+        <label for="LoanOriginationQuarter">Loan Origination Quarter:</label>
+        <input type="text" id="LoanOriginationQuarter" name="LoanOriginationQuarter" placeholder="Enter Loan Origination Quarter" required>
+      </div>
+
+      <div class="form-section">
+        <label for="LP_CustomerPayments">LP Customer Payments:</label>
+        <input type="text" id="LP_CustomerPayments" name="LP_CustomerPayments" placeholder="Enter LP Customer Payments" required>
+      </div>
+
+      <div class="form-section">
+        <label for="LP_CustomerPrincipalPayments">LP Customer Principal Payments:</label>
+        <input type="text" id="LP_CustomerPrincipalPayments" name="LP_CustomerPrincipalPayments" placeholder="Enter LP Customer Principal Payments" required>
+      </div>
+
+      <div class="form-section">
+        <label for="LoanCurrentDaysDelinquent">Loan Current Days Delinquent:</label>
+        <input type="text" id="LoanCurrentDaysDelinquent" name="LoanCurrentDaysDelinquent" placeholder="Enter Loan Current Days Delinquent" required>
+      </div>
+
+      <div class="form-section">
+        <label for="MonthlyLoanPayment">Monthly Loan Payment:</label>
+        <input type="text" id="MonthlyLoanPayment" name="MonthlyLoanPayment" placeholder="Enter Monthly Loan Payment" required>
+      </div>
+
+      <div class="form-section">
+        <label for="EmploymentStatus">Employment Status:</label>
+        <input type="text" id="EmploymentStatus" name="EmploymentStatus" placeholder="Enter Employment Status" required>
+      </div>
+
+      <div class="form-section" style="width: 100%;">
+        <input type="submit" value="Predict">
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    function updateModelOptions() {
+      var modelType = document.getElementById("model-type").value;
+      var modelSelect = document.getElementById("model");
+
+      // Clear previous options
+      modelSelect.innerHTML = '<option value="">Select Model</option>';
+
+      // Add new options based on model type
+      if (modelType === "classifiers") {
+        modelSelect.innerHTML += '<option value="rfc">Random Forest</option>';
+        modelSelect.innerHTML += '<option value="xgb">XGBoost</option>';
+      } else if (modelType === "regressors") {
+        modelSelect.innerHTML += '<option value="lr">Linear Regression</option>';
+        modelSelect.innerHTML += '<option value="lasso">Lasso Regression</option>';
+      }
+    }
+  </script>
+</body>
+</html>
